@@ -135,6 +135,7 @@ Follow these steps to set up and run the application on your local machine.
     seaborn==0.13.2
     statsmodels==0.14.1
     plotly==5.18.0
+    bayesian-optimization==1.4.3
     nevergrad==1.0.1
     scipy==1.13.0
     pydmd==0.4.1
@@ -163,3 +164,4 @@ Once the setup is complete, you can run the Streamlit application from your term
 
 
 ---
+
