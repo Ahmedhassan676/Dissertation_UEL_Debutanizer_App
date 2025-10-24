@@ -93,8 +93,8 @@ Follow these steps to set up and run the application on your local machine.
 1.  **Clone the Repository (Optional)**
     If you have the project in a git repository, clone it. Otherwise, just navigate to the project directory.
     ```bash
-    git clone <your-repository-url>
-    cd <your-repository-directory>
+    git clone https://github.com/Ahmedhassan676/Dissertation_UEL_Debutanizer_App
+    cd Dissertation_UEL_Debutanizer_App
     ```
 
 2.  **Create a Virtual Environment**
@@ -160,5 +160,6 @@ Once the setup is complete, you can run the Streamlit application from your term
     ```
 
 4.  The application will automatically open in a new tab in your default web browser. You can also access it at the local URL provided in the terminal (usually `http://localhost:8501`).
+
 
 ---
