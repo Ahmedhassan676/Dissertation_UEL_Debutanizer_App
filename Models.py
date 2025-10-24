@@ -2158,8 +2158,8 @@ if uploaded_file is not None:
                         try:
                             # Safely parse the string from the text area into a dictionary
                             param_grid = ast.literal_eval(param_grid_str)
-                            st.write("Using Custom Parameter Grid:")
-                            st.json(param_grid)
+                            st.write("Using Custom Parameter Grid")
+                            #st.json(param_grid)
                         except Exception as e:
                             st.error(f"Invalid Parameter Grid Dictionary: {e}")
                             st.stop() # Halt execution if the grid is invalid
@@ -2266,7 +2266,7 @@ if uploaded_file is not None:
                     if use_grid_search:
                         try:
                             param_grid = ast.literal_eval(param_grid_str)
-                            st.write("Using Custom Parameter Grid:"); #st.json(param_grid)
+                            st.write("Using Custom Parameter Grid"); #st.json(param_grid)
                         except Exception as e:
                             st.error(f"Invalid Parameter Grid Dictionary: {e}"); st.stop()
 
