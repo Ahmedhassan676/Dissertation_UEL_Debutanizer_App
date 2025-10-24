@@ -1,7 +1,7 @@
 # Machine Learning Model Predictor & Analyzer
 
 This is a comprehensive Streamlit web application designed for end-to-end machine learning workflows on time-series and tabular data. It allows users to upload a CSV file and perform Exploratory Data Analysis (EDA), anomaly detection, model training, and even process optimization without writing any code.
-
+Link to deployed App: https://dissertationueldebutanizerapp-5lacwudz9avu8mrn2pffxh.streamlit.app/
 
 
 ---
@@ -164,5 +164,6 @@ Once the setup is complete, you can run the Streamlit application from your term
 
 
 ---
+
 
 
