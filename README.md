@@ -85,7 +85,7 @@ Follow these steps to set up and run the application on your local machine.
 
 ### Prerequisites
 
--   **Python**: Version 3.9 or higher.
+-   **Python**: Version 3.11.
 -   **Package Manager**: `pip` or `conda`.
 
 ### Installation Steps
@@ -115,7 +115,7 @@ Follow these steps to set up and run the application on your local machine.
     *   **Using `conda`:**
         ```bash
         # Create and activate the environment
-        conda create --name ml_app python=3.9
+        conda create --name ml_app python=3.11
         conda activate ml_app
         ```
 
@@ -164,4 +164,5 @@ Once the setup is complete, you can run the Streamlit application from your term
 
 
 ---
+
 
