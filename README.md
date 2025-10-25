@@ -6,7 +6,7 @@ Link to deployed App: https://dissertationueldebutanizerapp-5lacwudz9avu8mrn2pff
 The Web app was developed as a part of my UEL dissertation :Utilisation of ML techniques for Soft Sensing and Optimisation in the Oil and Gas Industry to help explore and train models for the debutanizer dataset. The debutanizer dataset was first provided by (Fortuna et al., 2007) through the book’s supplementary materials. The debutanizer column is utilised in a desulfurization plant to separate LPG, the top product of the debutanizer, from naphtha, the bottom product. The naphtha is then further distilled into light naphtha and heavy naphtha through a naphtha splitter for further processing. The plant scheme is illustrated below (Figures 1 and 2). LPG usually consists mainly of propane (C3) and butane (C4) with a minimal amount of pentane (maximum 2%) (Rožanec et al., 2021). The objective was to develop a soft sensor that predicts the butane content in the naphtha splitter top product based on the debutanizer operating conditions, and hence, the butane content in the debutanizer bottoms, as they are strongly positively correlated. 
 
 ### Acknowledgement of Artificial Intelligence (AI) Usage
-I acknowledge the use of artificial intelligence (AI) tools during the preparation of this dissertation. Google's Gemini code assistant was employed to support the development and implementation of machine learning models, particularly in documenting, optimising code structures and input interfaces. Prompts included “create a selection box using st.selectbox for EDA, Anomaly detection, and Regression”.
+I acknowledge the use of artificial intelligence (AI) tools during the preparation of this dissertation. Google's Gemini code assistant was employed to support the development and implementation of machine learning models, particularly in documenting, optimising code structures and input interfaces. Prompts included “Provide documentation for the highlighted function”.
 The use of these tools was limited to technical and linguistic assistance; all conceptualisation, analysis, interpretation of results, and final editorial decisions were conducted independently by me.
 
 ---
@@ -172,6 +172,7 @@ Once the setup is complete, you can run the Streamlit application from your term
 References:
 1. Fortuna, L., Graziani, S., Rizzo, A., & Xibilia, M. G. (Eds.). (2007). Soft Sensors for Monitoring and Control of Industrial Processes. Springer London. https://doi.org/10.1007/978-1-84628-480-9
 2. Rožanec, J. M., Trajkova, E., Lu, J., Sarantinoudis, N., Arampatzis, G., Eirinakis, P., Mourtos, I., Onat, M. K., Yilmaz, D. A., Košmerlj, A., Kenda, K., Fortuna, B., & Mladenić, D. (2021). Cyber-Physical LPG Debutanizer Distillation Columns: Machine-Learning-Based Soft Sensors for Product Quality Monitoring. Applied Sciences, 11(24), 11790. https://doi.org/10.3390/app112411790
+
 
 
 
