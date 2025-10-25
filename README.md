@@ -170,8 +170,9 @@ Once the setup is complete, you can run the Streamlit application from your term
 
 ---
 References:
-Fortuna, L., Graziani, S., Rizzo, A., & Xibilia, M. G. (Eds.). (2007). Soft Sensors for Monitoring and Control of Industrial Processes. Springer London. https://doi.org/10.1007/978-1-84628-480-9
-Rožanec, J. M., Trajkova, E., Lu, J., Sarantinoudis, N., Arampatzis, G., Eirinakis, P., Mourtos, I., Onat, M. K., Yilmaz, D. A., Košmerlj, A., Kenda, K., Fortuna, B., & Mladenić, D. (2021). Cyber-Physical LPG Debutanizer Distillation Columns: Machine-Learning-Based Soft Sensors for Product Quality Monitoring. Applied Sciences, 11(24), 11790. https://doi.org/10.3390/app112411790
+1. Fortuna, L., Graziani, S., Rizzo, A., & Xibilia, M. G. (Eds.). (2007). Soft Sensors for Monitoring and Control of Industrial Processes. Springer London. https://doi.org/10.1007/978-1-84628-480-9
+2. Rožanec, J. M., Trajkova, E., Lu, J., Sarantinoudis, N., Arampatzis, G., Eirinakis, P., Mourtos, I., Onat, M. K., Yilmaz, D. A., Košmerlj, A., Kenda, K., Fortuna, B., & Mladenić, D. (2021). Cyber-Physical LPG Debutanizer Distillation Columns: Machine-Learning-Based Soft Sensors for Product Quality Monitoring. Applied Sciences, 11(24), 11790. https://doi.org/10.3390/app112411790
+
 
 
 
