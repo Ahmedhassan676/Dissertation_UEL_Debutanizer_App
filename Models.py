@@ -384,7 +384,7 @@ def evaluate_multi_lagged_models(
     return results_df, best_model
 
 def plot_time_series(y_true, y_pred, target_feature, title):
-    """Plots actual vs. predicted values as a time series."""
+    """Plots actual vs. predicted values."""
     fig, ax = plt.subplots(figsize=(15, 6))
     ax.plot(y_true, label='Actual Values', color='blue', alpha=0.7)
     ax.plot(y_pred, label='Predicted Values', color='red', linestyle='--', alpha=0.7)
@@ -397,7 +397,7 @@ def plot_time_series(y_true, y_pred, target_feature, title):
 
 def plot_model_metrics_enhanced(df):
     """
-    Enhanced version that creates two subplots showing R² and RMSE metrics 
+    creates two subplots showing R² and RMSE metrics 
     with markers for optimal performance points.
     
     Parameters:
@@ -465,8 +465,8 @@ def evaluate_regression(model, df, columns_to_drop, lag, target_name="Target", t
     y_test_pred = model.predict(X_test)
 
     # --- Evaluation Metrics ---
-    test_r2 = r2_score(y_test, y_test_pred)
-    test_rmse = np.sqrt(mean_squared_error(y_test, y_test_pred))
+    # test_r2 = r2_score(y_test, y_test_pred)
+    # test_rmse = np.sqrt(mean_squared_error(y_test, y_test_pred))
 
     # --- Residuals (test set) ---
     residuals = y_test - y_test_pred
@@ -878,7 +878,7 @@ def optimize_multiple_rows(
         optimization_goal (str): "Maximize" or "Minimize".
         bounds_percent (float): The percentage to define the optimization bounds for free variables.
         free_vars (list): The list of input variables that the optimizer is allowed to change.
-        budget (int): The computational budget for the optimizer for each row.
+        budget (int): The computational budget for the optimizer for each row (Iterations).
 
     Returns:
         list: A list of dictionaries, where each dictionary contains the detailed
@@ -922,7 +922,7 @@ def optimize_multiple_rows(
             budget=budget
         )
 
-        # Store comprehensive results for this row
+        # Store results for this row
         if initial_inputs is not None:
             actual_outputs = df_full.loc[row_idx, targets]
             result_row = {
@@ -1295,7 +1295,7 @@ def perform_basic_eda(df):
     # 5. Display Pair Plot
     st.subheader("Pairwise Relationships Plot")
     st.write("Visualizes pairwise relationships and distributions for numerical variables. This can be slow for datasets with many columns.")
-    if df_numeric.shape[1] > 10:
+    if df_numeric.shape[1] > 15:
         st.warning(f"Pair plot is disabled because the dataset has {df_numeric.shape[1]} numeric columns (more than 10). This is to prevent slow performance.")
     elif df_numeric.shape[1] > 1:
         st.pyplot(sns.pairplot(df_numeric))
@@ -1743,30 +1743,30 @@ def train_and_evaluate_dmdc(df, measured_features, control_features, target_feat
 
 
 # --- Model Definitions ---
-# A dictionary of time-series models for easy identification
+# A list of time-series models for easy identification (not used in our disserttion but for verifying a published paper using the same algorithem)
 DEEP_LEARNING_MODELS = [
     "Simple LSTM",
     "LSTM Encoder-Decoder with Attention",
     "LSTM Encoder-Decoder with Attention + 1D CNN",
 ]
-
+# List of Regression models
 LAGGED_MODELS = [
     "Random Forest Regressor (Lagged)",
-    "Gradient Boosting Regressor (Lagged)",
+    "Gradient Boosting Regressor (Lagged)", # Not used in dissertation
     "XGBoost Regressor (Lagged)",
     "Linear Regression (Lagged)",
     "Support Vector Regressor (Lagged)",
-    "Principal Component Regression (Lagged)",
+    "Principal Component Regression (Lagged)", # Not used in dissertation
     "MLP Regressor (Lagged)",
 ]
-
+# List of Multi-regression models
 MULTI_TARGET_MODELS = [
     "Multi-Target Linear Regression (Lagged)",
     "Multi-Target Random Forest (Lagged)",
     "Multi-Target XGBoost (Lagged)",
     "Multi-Target MLP (Lagged)",
 ]
-
+# DMDc model (not used in our disserttion but for verifying a published paper using the same algorithem)
 DMD_MODELS = [
     "Hankel DMD with Control",
 ]
@@ -1786,16 +1786,18 @@ with st.sidebar:
     train_button = False
     st.header("1. Data Upload")
     uploaded_file = st.file_uploader("Upload your CSV file", type=["csv"], key="file_uploader")
+    # Stages selectbox
     Required_calcs = st.selectbox("Choose your Phase", ['EDA','Anomaly Detection','Regression Models'], key="Phase_@_select")
     
     if Required_calcs == 'EDA':
+        # EDA Interface
         st.header("2. EDA Options")
         st.session_state.examine_lags = st.toggle("Examine Lags", key="examine_lags_toggle")
         basic_EDA = st.toggle("Basic EDA", key="basic_eda_toggle")
         examine_3D_feature = st.toggle('Examine features using 3D plots', key='examine_3D_feature')
 
     if Required_calcs == 'Anomaly Detection':
-        
+        # Anomaly Detection interface
         st.header("2. Anomaly Detection Settings")
         st.subheader("Select Methods to Run")
         use_zscore = st.toggle("Z-Score", value=True, key="use_zscore")
@@ -1829,6 +1831,7 @@ with st.sidebar:
         if max_votes > 1:
             ad_vote_threshold = st.slider("Minimum Votes to Flag Anomaly", 1, max_votes, default_vote, key="ad_vote")
         else:
+            # If only one method was selected
             st.session_state.ad_vote = 1
             ad_vote_threshold = 1
             
@@ -1837,7 +1840,7 @@ with st.sidebar:
 
     if Required_calcs == 'Regression Models':
         st.header("2. Model Selection & Config")
-        
+        # Selection of regression models
         MODEL_CATEGORIES = ["Time Series Models", "Regression Models", "Multi-Target Models"]
         model_category = st.selectbox("Choose a Model Category", MODEL_CATEGORIES, key="model_category_select")
 
@@ -2028,8 +2031,8 @@ if uploaded_file is not None:
             if is_deep_learning_model:
                 with st.spinner("Processing data and training DL model... This may take a few minutes."):
                     # --- Data Processing for DL Models ---
-                    input_scaler = MinMaxScaler(feature_range=(0, 1))
-                    target_scaler = MinMaxScaler(feature_range=(0, 1))
+                    input_scaler = MinMaxScaler(feature_range=(0, 1)) # For later use, not effective in dissertation dataset as dataset is already scaled
+                    target_scaler = MinMaxScaler(feature_range=(0, 1)) # For later use, not effective in dissertation dataset
 
                     df_inputs_scaled = input_scaler.fit_transform(df[input_features])
                     df_target_scaled = target_scaler.fit_transform(df[[target_feature]])
@@ -2148,7 +2151,7 @@ if uploaded_file is not None:
                     with col2_viz:
                         st.pyplot(fig_ts)
 
-            #else:  # Lagged Models Workflow
+            # Lagged Models Workflow
             elif model_option in LAGGED_MODELS:
                 with st.spinner(f"Evaluating {model_option} for lags 0 to {max_lag}..."):
                     df_filtered = df[input_features + [target_feature]].copy()
@@ -2194,7 +2197,7 @@ if uploaded_file is not None:
                     st.subheader("Lag Evaluation Results")
                     st.write("The model was trained and evaluated for each lag value. The best performing lag is selected based on Test R².")
                     
-                    # Display new enhanced plot
+                    # Display model results metrics
                     fig_metrics = plot_model_metrics_enhanced(results_df)
                     st.pyplot(fig_metrics)
                     
@@ -2252,6 +2255,7 @@ if uploaded_file is not None:
                     # --- Data Preparation ---
                     st.subheader("Lagged Data Preview")
                     st.write(f"Creating dataset with {input_lags} lag(s) for predictors and {target_lags} lag(s) for autoregressive features.")
+                    # Creating the new lagged dataset based on user input
                     df_lagged = make_multi_lagged_df(df, input_features, target_features, input_lags, target_lags)
                     st.dataframe(df_lagged.head())
 
@@ -2305,7 +2309,7 @@ if uploaded_file is not None:
 
                     st.success("Multi-Target model training complete!")
 
-                    # --- Save model and related info to session state for later use ---
+                    # --- Save model and related info to session state for later use (The optimiser) ---
                     st.session_state['best_multi_target_model'] = best_model
                     st.session_state['multi_target_input_features'] = input_features
                     st.session_state['multi_target_target_features'] = target_features
@@ -2392,7 +2396,7 @@ if uploaded_file is not None:
                 col1.metric("Mean Test RMSE", f"{mean_test_rmse:.4f}")
                 col2.metric("Mean Test R-squared (R2)", f"{mean_test_r2:.4f}")
 
-                # Create and display the table
+                # Create and display the metrics table
                 metrics_data = {
                     "Train R²": train_r2_scores,
                     "Test R²": test_r2_scores,
